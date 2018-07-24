@@ -5,7 +5,9 @@
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
+require('./auth/auth')
+require('./channels/channel')
 
 $(() => {
-  // your JS code goes here
+    // your JS code goes here
 })

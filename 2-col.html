@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>2 Column CSS Layout - concise design</title>
+    <style type='text/css'>
+        .mask {
+            position: relative;
+            overflow: hidden;
+            margin: 0px auto;
+            width: 100%;
+            background-color: #f4f4f4
+        }
+        
+        .header {
+            float: left;
+            width: 100%;
+            background-color: #f4f4f4
+        }
+        
+        .colleft {
+            position: relative;
+            width: 100%;
+            right: 73%;
+            background-color: #f4f4f4
+        }
+        
+        .col1 {
+            position: relative;
+            overflow: hidden;
+            float: left;
+            width: 71%;
+            left: 101%;
+            background-color: #e6e6e6
+        }
+        
+        .col2 {
+            position: relative;
+            overflow: hidden;
+            float: left;
+            width: 25%;
+            left: 3%;
+            background-color: #e6e6e6
+        }
+        
+        .footer {
+            float: left;
+            width: 100%;
+            background-color: #b4caf7
+        }
+        
+        body {
+            padding: 0px;
+            margin: 0px;
+            font-size: 90%;
+            background-color: #e7e7de
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mask">
+        <div class="header">
+            header
+        </div>
+        <div class="colleft">
+            <div class="col1">
+                right
+            </div>
+            <div class="col2">
+                left
+            </div>
+        </div>
+        <div class="footer">
+            footer
+        </div>
+    </div>
+</body>
+
+</html>

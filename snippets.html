@@ -1,0 +1,60 @@
+<!-- html modal snippets -->
+
+<!-- modal html - modified from https://codepen.io/ekrof/pen/yOrPwv and supplied by https://codepen.io/ekrof/-->
+
+<div class="modal-container">
+    <input id="modal-toggle" type="checkbox">
+    <label class="modal-btn" for="modal-toggle">Sign Up</label>
+    <label class="modal-backdrop" for="modal-toggle"></label>
+    <div class="modal-content">
+        <label class="modal-close" for="modal-toggle">&#x2715;</label>
+        <!-- <h2>Sign Up</h2>
+            <hr /> -->
+        <form id="sign-up">
+            <fieldset>
+                <legend>Sign up</legend>
+                <p id="sign-up-message"></p>
+                <input type="text" name="credentials[email]" placeholder="Email">
+                <input type="password" name="credentials[password]" placeholder="Password">
+                <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+            </fieldset>
+        </form>
+        <label id="sign-up-modal-button" class="modal-content-btn" for="modal-toggle">Submit</label>
+    </div>
+</div>
+<div class="modal-container">
+    <input id="modal-toggle" type="checkbox">
+    <label class="modal-btn" for="modal-toggle">Sign In</label>
+    <label class="modal-backdrop" for="modal-toggle"></label>
+    <div class="modal-content">
+        <label class="modal-close" for="modal-toggle">&#x2715;</label>
+        <hr />
+        <form id="sign-in">
+            <fieldset>
+                <legend>Sign In</legend>
+                <p id="sign-in-message"></p>
+                <input type="text" name="credentials[email]" placeholder="Email">
+                <input type="password" name="credentials[password]" placeholder="Password">
+            </fieldset>
+        </form>
+        <label class="modal-content-btn" for="modal-toggle">Submit</label>
+    </div>
+</div>
+
+<!-- <input id="modal-toggle" type="checkbox"> -->
+<!-- <label class="modal-btn" for="modal-toggle">Change Password</label>
+        <label class="modal-backdrop" for="modal-toggle"></label>
+        <div class="modal-content">
+            <label class="modal-close" for="modal-toggle">&#x2715;</label>
+            <hr />
+            <form id="change-password">
+                <fieldset>
+                    <legend>Change Password</legend>
+                    <p id="change-password-message"></p>
+                    <input type="password" name="passwords[old]" placeholder="Old Password">
+                    <input type="password" name="passwords[new]" placeholder="New Password">
+                </fieldset>
+            </form>
+            <label class="modal-content-btn" for="modal-toggle">Submit</label>
+        </div>
+    </div> -->
