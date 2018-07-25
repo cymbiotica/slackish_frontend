@@ -11,6 +11,16 @@ const showChannels = function() {
         }
     })
 }
+
+const showChannel = function(channelId) {
+    return $.ajax({
+        url: config.apiUrl + `/channels/${channelId}`,
+        method: 'GET',
+        headers: {
+            Authorization: 'Token token=' + store.user.token
+        }
+    })
+}
 const createChannel = function(data) {
     return $.ajax({
         url: config.apiUrl + '/channels',
@@ -24,5 +34,6 @@ const createChannel = function(data) {
 
 module.exports = {
     showChannels,
+    showChannel,
     createChannel
 }

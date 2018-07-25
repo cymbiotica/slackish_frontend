@@ -82,7 +82,7 @@
     <div class="mask">
         <div class="colleft">
             <div class="channels">
-                <h4>Channels <a href="#create-channel-modal" class="link-after">+</a></h4>
+                <h4>Channels <a href="#create-channel-modal" class="link-after hidden">&#9881;</a></h4>
                 <div id="create-channel-modal" class="modalDialog-te">
                     <div>
                         <a href="#close" title="Close" class="close">X</a>
@@ -93,13 +93,16 @@
                                 <input type="text" name="channel[name]" placeholder="Channel Name">
                                 <input type="text" name="channel[description]" placeholder="Channel Description">
                                 <input type="submit" value="Submit">
-                            </fieldset>
+                            </fieldset> For
                         </form>
                     </div>
                 </div>
                 <!-- Add channels here-->
+                <form id="channel-search">
+                    <input type="text" name="channel[name]" placeholder="Search For Channel">
+                    <input type="submit" value="Search">
+                </form>
                 <div id="channel-list" style="overflow:auto">
-                    <div> <a href="#">Test Channel</a></div>
                 </div>
             </div>
 

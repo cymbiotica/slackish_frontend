@@ -1,13 +1,15 @@
 'use strict'
 const store = require('../store')
+const channelEvents = require('../channels/channel-events')
 
 const onCreateChannelSuccess = function(data) {
-    // set success message in modal - maybe close after a moment
+    store.channel = data.channel
+        // set success message in modal - maybe close after a moment
     $('#create-channel-message').text('Channel Created')
     $('#create-channel-message').css('background-color', 'green')
 }
 
-const onShowChannels = function(data) {
+const createChannelList = function(data) {
     // generate channel link
 
     // the container
@@ -16,16 +18,27 @@ const onShowChannels = function(data) {
     for (let i = 0; i < data.channels.length; i++) {
         // new channel link
         const channel = document.createElement('div')
-            //channel.innerText = data.channel.name
-        const channelLink = document.createElement('a')
-        channelLink.setAttribute('href', '.messages')
+        const channelLink = document.createElement('div')
+            // channelLink.setAttribute('href', '.messages')
         channelLink.innerText = data.channels[i].name
+        store.channels = data.channels
+        channelLink.addEventListener('click', function() {
+            console.log('messages event handler worked')
+        })
         channel.appendChild(channelLink)
         channelContainer.append(channel)
     }
 }
 
+const showChannel = function(channelId, data) {
+    const channelContainer = $('#channel-list')
+    const channelList = $('#channel-list')
+    channelList.empty()
+    channelList.append(data.channel.name)
+}
+
 module.exports = {
     onCreateChannelSuccess,
-    onShowChannels
+    createChannelList,
+    showChannel
 }

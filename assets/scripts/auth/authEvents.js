@@ -13,8 +13,7 @@ const onSignup = function(event) {
     const data = getFormFields(this)
     api.signUp(data)
         .then(ui.onSignUpSuccess)
-
-    .catch(ui.onSignUpFailure)
+        .catch(ui.onSignUpFailure)
 }
 
 // sign up for a single user

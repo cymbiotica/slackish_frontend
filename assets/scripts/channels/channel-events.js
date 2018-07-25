@@ -1,6 +1,7 @@
 const channelUI = require('../channels/channel-UI')
 const channelApi = require('../channels/channel-api')
 const getFormFields = require('../../../lib/get-form-fields')
+const store = require('../store')
 
 const onCreateChannel = function(event) {
     event.preventDefault()
@@ -20,7 +21,7 @@ const onShowChannels = function(event) {
 const getChannels = function() {
     this.hideChannels()
     channelApi.showChannels()
-        .then(channelUI.onShowChannels)
+        .then(channelUI.createChannelList)
         // .catch(channelUI.onCreateChannelFailure)
 }
 
@@ -29,9 +30,30 @@ const hideChannels = function() {
     channelList.empty()
 }
 
+const loadChannelMessages = function() {
+    console.log('messages event worked')
+}
+
+const onGetChannel = function(event) {
+    let channelId
+    event.preventDefault()
+    const data = getFormFields(event.target)
+    for (let i = 0; i < store.channels.length; i++) {
+        if (store.channels[i].name === data.channel.name) {
+            // console.log(`store: ${store.channels[i].name}`)
+            // console.log(`data: ${data.channel.name}`)
+            channelId = store.channels[i].id
+        }
+    }
+    channelApi.showChannel(channelId, data)
+        .then(channelUI.showChannel(channelId, data))
+}
+
 module.exports = {
     onCreateChannel,
     getChannels,
     onShowChannels,
-    hideChannels
+    hideChannels,
+    loadChannelMessages,
+    onGetChannel
 }
