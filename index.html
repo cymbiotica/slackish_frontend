@@ -82,8 +82,8 @@
     <div class="mask">
         <div class="colleft">
             <div class="channels">
-                <h4>Channels <a href="#create-channel-modal" class="link-after hidden">&#9881;</a></h4>
-                <div id="create-channel-modal" class="modalDialog-te">
+                <h4>Channels <a href="#channel-admin-modal" class="link-after hidden">&#9881;</a></h4>
+                <div id="channel-admin-modal" class="modalDialog-te">
                     <div>
                         <a href="#close" title="Close" class="close">X</a>
                         <form id="create-channel">
@@ -93,15 +93,29 @@
                                 <input type="text" name="channel[name]" placeholder="Channel Name">
                                 <input type="text" name="channel[description]" placeholder="Channel Description">
                                 <input type="submit" value="Submit">
-                            </fieldset> For
+                            </fieldset>
+                        </form>
+                        <br />
+                        <form id="update-channel">
+                            <fieldset>
+                                <legend>Update Channel</legend>
+                                <p id="create-channel-message"></p>
+                                <input type="text" name="channel[name]" placeholder="Channel Name">
+                                <input type="text" name="channel[description]" placeholder="Channel Description">
+                                <input type="submit" value="Submit">
+                            </fieldset>
+                        </form>
+                        <form id="channel-search">
+                            <fieldset>
+                                <legend>Search Channels</legend>
+                                <input type="text" name="channel[name]" placeholder="Search For Channel">
+                                <input type="submit" value="Search">
+                            </fieldset>
                         </form>
                     </div>
                 </div>
                 <!-- Add channels here-->
-                <form id="channel-search">
-                    <input type="text" name="channel[name]" placeholder="Search For Channel">
-                    <input type="submit" value="Search">
-                </form>
+
                 <div id="channel-list" style="overflow:auto">
                 </div>
             </div>

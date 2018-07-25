@@ -32,8 +32,30 @@ const createChannel = function(data) {
     })
 }
 
+const deleteChannel = function(channelId) {
+    return $.ajax({
+        url: config.apiUrl + `/channels/${channelId}`,
+        method: 'DELETE',
+        headers: {
+            Authorization: 'Token token=' + store.user.token
+        }
+    })
+}
+
+const updateChannel = function(channelId) {
+    return $.ajax({
+        url: config.apiUrl + `/channels/${channelId}`,
+        method: 'PATCH',
+        headers: {
+            Authorization: 'Token token=' + store.user.token
+        }
+    })
+}
+
 module.exports = {
     showChannels,
     showChannel,
-    createChannel
+    createChannel,
+    deleteChannel,
+    updateChannel
 }

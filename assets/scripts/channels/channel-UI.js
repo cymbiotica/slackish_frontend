@@ -1,6 +1,6 @@
 'use strict'
 const store = require('../store')
-const channelEvents = require('../channels/channel-events')
+const api = require('../channels/channel-api')
 
 const onCreateChannelSuccess = function(data) {
     store.channel = data.channel
@@ -16,29 +16,48 @@ const createChannelList = function(data) {
     const channelContainer = $('#channel-list')
 
     for (let i = 0; i < data.channels.length; i++) {
-        // new channel link
-        const channel = document.createElement('div')
-        const channelLink = document.createElement('div')
-            // channelLink.setAttribute('href', '.messages')
-        channelLink.innerText = data.channels[i].name
         store.channels = data.channels
+
+        const deleteIcon = document.createElement('a')
+        deleteIcon.innerHTML = '&#9985;'
+        deleteIcon.setAttribute('class', 'delete-icon')
+        deleteIcon.addEventListener('click', function() {
+            event.preventDefault()
+            api.deleteChannel(data.channels[i].id)
+                // how can I show the list here without using channel-events.js
+                // events.onDeleteChannel(data.channels[i].id)
+        })
+
+        const channelLink = document.createElement('div')
+        channelLink.innerText = data.channels[i].name
+        channelLink.append(deleteIcon)
         channelLink.addEventListener('click', function() {
             console.log('messages event handler worked')
         })
+
+        const channel = document.createElement('div')
         channel.appendChild(channelLink)
         channelContainer.append(channel)
     }
 }
 
 const showChannel = function(channelId, data) {
-    const channelContainer = $('#channel-list')
+    // need to set event handler again here.
     const channelList = $('#channel-list')
     channelList.empty()
+
     channelList.append(data.channel.name)
 }
+
+
+const deleteChannel = function() {
+    this.createChannelList()
+}
+
 
 module.exports = {
     onCreateChannelSuccess,
     createChannelList,
-    showChannel
+    showChannel,
+    deleteChannel
 }

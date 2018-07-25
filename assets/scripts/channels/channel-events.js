@@ -35,25 +35,62 @@ const loadChannelMessages = function() {
 }
 
 const onGetChannel = function(event) {
-    let channelId
+
     event.preventDefault()
     const data = getFormFields(event.target)
+    let channelId = getChanId(data)
+
+    channelApi.showChannel(channelId, data)
+        .then(channelUI.showChannel(channelId, data))
+}
+
+const onDeleteChannel = function(event) {
+    // event.preventDefault()
+    // debugger
+    // channelApi.deleteChannel(data)
+    //     .then(channelUI.deleteChannel)
+
+}
+
+const onUpdateChannel = function(event) {
+    event.preventDefault()
+    let data = getFormFields(this)
+
+    channelApi.updateChannel(getChanId(data), data)
+}
+
+
+// helper
+const getChannelId = function(data) {
+    let channelId
+    for (let i = 0; i < store.channels.length; i++) {
+        if (store.channels[i].name === data.channel.name) {
+            channelId = store.channels[i].id
+            return channelId
+        }
+    }
+}
+
+
+// helper
+const getChanId = function(data) {
+    let channelId
     for (let i = 0; i < store.channels.length; i++) {
         if (store.channels[i].name === data.channel.name) {
             // console.log(`store: ${store.channels[i].name}`)
             // console.log(`data: ${data.channel.name}`)
             channelId = store.channels[i].id
+            return channelId
         }
     }
-    channelApi.showChannel(channelId, data)
-        .then(channelUI.showChannel(channelId, data))
 }
-
 module.exports = {
     onCreateChannel,
     getChannels,
     onShowChannels,
     hideChannels,
     loadChannelMessages,
-    onGetChannel
+    onGetChannel,
+    onDeleteChannel,
+    onUpdateChannel
 }

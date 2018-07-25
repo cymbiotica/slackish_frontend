@@ -11,4 +11,6 @@ $(() => {
     })
 
     $('#channel-search').on('submit', events.onGetChannel)
+    $('.delete-icon').on('click', events.onShowChannels)
+    $('#update-channel').on('submit', events.onUpdateChannel)
 })
