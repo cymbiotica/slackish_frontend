@@ -1,12 +1,14 @@
 'use strict'
 const store = require('../store')
 const api = require('../channels/channel-api')
+const events = require('../channels/events2')
 
 const onCreateChannelSuccess = function(data) {
     store.channel = data.channel
         // set success message in modal - maybe close after a moment
     $('#create-channel-message').text('Channel Created')
     $('#create-channel-message').css('background-color', 'green')
+    events.getChannels()
 }
 
 const createChannelList = function(data) {
@@ -24,6 +26,7 @@ const createChannelList = function(data) {
         deleteIcon.addEventListener('click', function() {
             event.preventDefault()
             api.deleteChannel(data.channels[i].id)
+                .then(event.getChannels)
                 // how can I show the list here without using channel-events.js
                 // events.onDeleteChannel(data.channels[i].id)
         })
@@ -51,7 +54,8 @@ const showChannel = function(channelId, data) {
 
 
 const deleteChannel = function() {
-    this.createChannelList()
+    events.getChannels()
+        // this.createChannelList()
 }
 
 
