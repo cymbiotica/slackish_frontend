@@ -9,8 +9,7 @@ $(() => {
     $('a[href$="-modal"]').on('click', function() {
         $('div[id$="modal"]').show()
     })
-
-    $('#channel-search').on('submit', events.onGetChannel)
+       $('#channel-search').on('submit', events.onGetChannel)
     $('.delete-icon').on('click', events.onShowChannels)
     $('#update-channel').on('submit', events.onUpdateChannel)
 })

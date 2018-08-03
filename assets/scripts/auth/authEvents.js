@@ -24,7 +24,7 @@ const onSignIn = function(event) {
     const data = getFormFields(this)
     api.signIn(data)
         .then(ui.onSignInSuccess)
-        .then(setTimeout(() => $('.modalDialog-te').hide(), 1000))
+        // .then(setTimeout(() => $('.modalDialog-te').hide(), 1500))
         .catch(ui.onSignInFailure)
 }
 

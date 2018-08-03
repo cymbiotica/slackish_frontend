@@ -6,6 +6,7 @@ const resetForms = function() {
     document.getElementById('sign-up').reset()
     document.getElementById('sign-in').reset()
     document.getElementById('change-password').reset()
+    
 }
 
 const onSignUpSuccess = function() {
@@ -23,6 +24,7 @@ const onSignInSuccess = function(data) {
     store.user = data.user
     $('#sign-in-message').text('Signed in successfully.')
     $('#sign-in-message').css('background-color', 'green')
+    // setTimeout($('#sign-in-message').text(''), 1500)
     channelEvents.getChannels()
     $('a[href^="#channel-admin-modal').toggleClass('hidden')
     $('a[href^="#change-password-modal"]').show()
@@ -30,9 +32,7 @@ const onSignInSuccess = function(data) {
     $('a[href^="#sign-up-modal"]').hide()
     $('a[href^="#sign-in-modal"]').hide()
 
-    setTimeout(() => $('#sign-up-message').text(''), 3000)
 }
-
 const onSignInFailure = function(error) {
     console.log(error)
     $('#sign-in-message').text('Signed in failed.')
