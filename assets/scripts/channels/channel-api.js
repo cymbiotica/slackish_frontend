@@ -52,9 +52,8 @@ const updateChannel = function (channelId, data) {
     },
     data: {
       channel: {
-        // where is this stuff?
-        name: data.channel.new_name
-        // description: store.data.description
+        name: data.channel.new_name,
+        description: data.channel.description
       }
     }
   })

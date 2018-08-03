@@ -57,6 +57,7 @@ const onUpdateChannel = function(event) {
     let data = getFormFields(this)
 
     channelApi.updateChannel(getChanId(data), data)
+    .then(this.getChannels)
 }
 
 
