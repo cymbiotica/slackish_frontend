@@ -1,6 +1,7 @@
 // 'use strict'
 const store = require('../store')
 const channelEvents = require('../channels/channel-events')
+const channelUI = require('../channels/channel-UI')
 
 const resetForms = function() {
     document.getElementById('sign-up').reset()
@@ -52,7 +53,7 @@ const onChangePasswordFailure = function() {
 const onSignOutSuccess = function() {
     $('#sign-out-message').text('Signed out successfully.')
     $('#sign-out-message').css('background-color', 'green')
-    channelEvents.hideChannels()
+    channelUI.hideChannels()
     $('a[href^="#sign-up-modal"]').show()
     $('a[href^="#sign-in-modal"]').show()
     $('a[href^="#change-password-modal"]').hide()
