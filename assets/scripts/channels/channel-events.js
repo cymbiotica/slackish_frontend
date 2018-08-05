@@ -19,15 +19,12 @@ const onShowChannels = function(event) {
 
 // generic event-less api request
 const getChannels = function() {
-    this.hideChannels()
+    
+    channelUI.hideChannels()
+    debugger
     channelApi.showChannels()
         .then(channelUI.createChannelList)
         // .catch(channelUI.onCreateChannelFailure)
-}
-
-const hideChannels = function() {
-    const channelList = $('#channel-list')
-    channelList.empty()
 }
 
 const loadChannelMessages = function() {
@@ -57,19 +54,20 @@ const onUpdateChannel = function(event) {
     let data = getFormFields(this)
 
     channelApi.updateChannel(getChanId(data), data)
+    .then(channelUI.onUpdateChannelSuccess)
 }
 
 
-// helper
-const getChannelId = function(data) {
-    let channelId
-    for (let i = 0; i < store.channels.length; i++) {
-        if (store.channels[i].name === data.channel.name) {
-            channelId = store.channels[i].id
-            return channelId
-        }
-    }
-}
+// // helper
+// const getChannelId = function(data) {
+//     let channelId
+//     for (let i = 0; i < store.channels.length; i++) {
+//         if (store.channels[i].name === data.channel.name) {
+//             channelId = store.channels[i].id
+//             return channelId
+//         }
+//     }
+// }
 
 
 // helper
@@ -88,7 +86,6 @@ module.exports = {
     onCreateChannel,
     getChannels,
     onShowChannels,
-    hideChannels,
     loadChannelMessages,
     onGetChannel,
     onDeleteChannel,

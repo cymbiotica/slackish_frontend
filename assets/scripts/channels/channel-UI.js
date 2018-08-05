@@ -1,7 +1,7 @@
 'use strict'
 const store = require('../store')
 const api = require('../channels/channel-api')
-const events = require('../channels/events2')
+const events = require('../channels/channel-events')
 
 const onCreateChannelSuccess = function(data) {
     store.channel = data.channel
@@ -53,15 +53,24 @@ const showChannel = function(channelId, data) {
 }
 
 
-const deleteChannel = function() {
+const onDeleteChannelSuccess = function() {
     events.getChannels()
-        // this.createChannelList()
 }
 
+const onUpdateChannelSuccess = function () {
+    events.getChannels()
+}
+
+const hideChannels = function() {
+    const channelList = $('#channel-list')
+    channelList.empty()
+}
 
 module.exports = {
     onCreateChannelSuccess,
     createChannelList,
     showChannel,
-    deleteChannel
+    onDeleteChannelSuccess,
+    onUpdateChannelSuccess,
+    hideChannels
 }
