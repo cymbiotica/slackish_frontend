@@ -21,7 +21,6 @@ const onShowChannels = function(event) {
 const getChannels = function() {
     
     channelUI.hideChannels()
-    debugger
     channelApi.showChannels()
         .then(channelUI.createChannelList)
         // .catch(channelUI.onCreateChannelFailure)
