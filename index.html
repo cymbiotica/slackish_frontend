@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Slack-ish</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Do not add `link` tags-->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Do not add `script` tags-->
+    <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+    <header>Slack-ish</header>
+    <nav>
+        <!-- modal idea from : http://jsfiddle.net/3Vykc/-->
+        <a href="#sign-up-modal">Sign Up</a>
+        <div id="sign-up-modal" class="modalDialog-te">
+            <div>
+                <a href="#close" title="Close" class="close">X</a>
+                <form id="sign-up" class="border left">
+                    <fieldset>
+                        <legend>Sign up</legend>
+                        <p id="sign-up-message"></p>
+                        <input type="text" name="credentials[email]" placeholder="Email">
+                        <input type="password" name="credentials[password]" placeholder="Password">
+                        <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+                        <input type="submit" value="Sign Up">
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <a href="#sign-in-modal">Sign In</a>
+        <div id="sign-in-modal" class="modalDialog-te">
+            <div>
+                <a href="#close" title="Close" class="close">X</a>
+                <form id="sign-in" class="border left">
+                    <fieldset>
+                        <legend>Sign In</legend>
+                        <p id="sign-in-message"></p>
+                        <input type="text" name="credentials[email]" placeholder="Email">
+                        <input type="password" name="credentials[password]" placeholder="Password">
+                        <input type="submit" value="Sign In">
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <a href="#change-password-modal">Change Password</a>
+        <div id="change-password-modal" class="modalDialog-te">
+            <div>
+                <a href="#close" title="Close" class="close">X</a>
+                <form id="change-password" class="border">
+                    <fieldset>
+                        <legend>Change Password</legend>
+                        <p id="change-password-message"></p>
+                        <input type="password" name="passwords[old]" placeholder="Old Password">
+                        <input type="password" name="passwords[new]" placeholder="New Password">
+                        <input type="submit" value="Change Password">
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <a href="#sign-out-modal">Sign Out</a>
+        <div id="sign-out-modal" class="modalDialog-te">
+            <div>
+                <a href="#close" title="Close" class="close">X</a>
+                <form id="sign-out" class="border">
+                    <fieldset>
+                        <legend>Sign out</legend>
+                        <p id="sign-out-message"></p>
+                        <input type="submit" value="Sign Out">
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mask">
+        <div class="colleft">
+            <div class="channels">
+                <h4>Channels <a href="#channel-admin-modal" class="link-after hidden">&#9881;</a></h4>
+                <div id="channel-admin-modal" class="modalDialog-te">
+                    <div>
+                        <a href="#close" title="Close" class="close">X</a>
+                        <form id="create-channel">
+                            <fieldset>
+                                <legend>Create Channel</legend>
+                                <p id="create-channel-message"></p>
+                                <input type="text" name="channel[name]" placeholder="Channel Name">
+                                <input type="text" name="channel[description]" placeholder="Channel Description">
+                                <input type="submit" value="Submit">
+                            </fieldset>
+                        </form>
+                        <br />
+                        <form id="update-channel">
+                            <fieldset>
+                                <legend>Update Channel</legend>
+                                <p id="create-channel-message"></p>
+                                <input type="text" name="channel[name]" placeholder="Old Name">
+                                <input type="text" name="channel[new_name]" placeholder="New Name">
+                                <input type="text" name="channel[description]" placeholder="Description">
+                                <input type="submit" value="Submit">
+                            </fieldset>
+                        </form>
+                        <form id="channel-search">
+                            <fieldset>
+                                <legend>Search Channels</legend>
+                                <input type="text" name="channel[name]" placeholder="Search For Channel">
+                                <input type="submit" value="Search">
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <!-- Add channels here-->
+
+                <div id="channel-list" style="overflow:auto">
+                </div>
+            </div>
+
+            <div class="messages" style="overflow:auto">
+                MESSAGES HERE
+            </div>
+        </div>
+    </div>
+    <!-- <main class="main-content grid-container">
+
+        <section class="messages">
+            <div id="message-list" class="border" style="overflow:auto">
+
+        </section>
+    </main> -->
+
+
+    <footer id="footer">
+        Created by Terry Esposito &C2018
+    </footer>
+</body>
+
+</html>
