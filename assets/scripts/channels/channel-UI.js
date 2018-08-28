@@ -11,7 +11,7 @@ const onCreateChannelSuccess = function (data, getChannels) {
   getChannels()
 }
 
-const createChannelList = function (data) {
+const createChannelList = function (data, showChannels) {
   const channelContainer = $('#channel-list')
 
   for (let i = 0; i < data.channels.length; i++) {
@@ -21,10 +21,9 @@ const createChannelList = function (data) {
     deleteIcon.innerHTML = '&#9985;'
     deleteIcon.setAttribute('class', 'delete-icon')
     deleteIcon.addEventListener('click', function (event) {
-      event.preventDefault()
       api.deleteChannel(data.channels[i].id)
         .then((event) => {
-          onDeleteChannelSuccess(event)
+          onDeleteChannelSuccess(event, showChannels)
         })
     })
 
@@ -49,8 +48,9 @@ const showChannel = function(channelId, data) {
     channelList.append(data.channel.name)
 }
 
-const onDeleteChannelSuccess = function (event, getChannels) {
-  getChannels()
+const onDeleteChannelSuccess = function (event, showChannels) {
+  // event.preventDefault()
+  showChannels()
 }
 
 const onUpdateChannelSuccess = function (data, getChannels) {

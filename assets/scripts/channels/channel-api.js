@@ -43,7 +43,7 @@ const deleteChannel = function (channelId) {
 }
 
 const updateChannel = function (channelId, data) {
-  console.log(data)
+  // console.log(data)
   return $.ajax({
     url: config.apiUrl + `/channels/${channelId}`,
     method: 'PATCH',
