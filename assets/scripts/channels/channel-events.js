@@ -15,7 +15,7 @@ const onCreateChannel = function (event) {
 
 // use this when you have an event that wants to trigger a shows channels request
 const onShowChannels = function (event) {
-    event.preventDefault()
+    // event.preventDefault()
     getChannels()
 }
 
@@ -24,7 +24,7 @@ const getChannels = function (data) {
   channelUI.hideChannels() 
   channelApi.showChannels()
     .then((data) => {
-      channelUI.createChannelList(data)
+      channelUI.createChannelList(data, onShowChannels)
     })
     // .catch(channelUI.onCreateChannelFailure)
 }
