@@ -26,7 +26,7 @@ const onSignInSuccess = function(data) {
     $('#sign-in-message').text('Signed in successfully.')
     $('#sign-in-message').css('background-color', 'green')
     // setTimeout($('#sign-in-message').text(''), 1500)
-    channelEvents.getChannels()
+    channelEvents.getChannels(data)
     $('a[href^="#channel-admin-modal').toggleClass('hidden')
     $('a[href^="#change-password-modal"]').show()
     $('a[href^="#sign-out-modal"]').show()

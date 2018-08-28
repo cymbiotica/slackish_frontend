@@ -1,9 +1,9 @@
 const getFormFields = require('../../../lib/get-form-fields') // supplied module from GA
 const api = require('../auth/authApi') // our user api
 const ui = require('../auth/authUi') // user UI updates
-const channelEvents = require('../channels/channel-events')
+// const channelEvents = require('../channels/channel-events')
 
-const store = require('../store')
+// const store = require('../store')
 
 // sign up for a single user
 // @param event is the click event from the submit button

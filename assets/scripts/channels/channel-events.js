@@ -3,27 +3,30 @@ const channelApi = require('../channels/channel-api')
 const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 
-const onCreateChannel = function(event) {
-    event.preventDefault()
-    const data = getFormFields(this)
-    channelApi.createChannel(data)
-        .then(channelUI.onCreateChannelSuccess)
-        .catch(channelUI.onCreateChannelFailure)
+const onCreateChannel = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  channelApi.createChannel(data)
+    .then((data) => {
+      channelUI.onCreateChannelSuccess(data, getChannels)
+    })
+    .catch(channelUI.onCreateChannelFailure)
 }
 
 // use this when you have an event that wants to trigger a shows channels request
-const onShowChannels = function(event) {
-    event.preventDefault
+const onShowChannels = function (event) {
+    event.preventDefault()
     getChannels()
 }
 
 // generic event-less api request
-const getChannels = function() {
-    
-    channelUI.hideChannels()
-    channelApi.showChannels()
-        .then(channelUI.createChannelList)
-        // .catch(channelUI.onCreateChannelFailure)
+const getChannels = function (data) {
+  channelUI.hideChannels() 
+  channelApi.showChannels()
+    .then((data) => {
+      channelUI.createChannelList(data)
+    })
+    // .catch(channelUI.onCreateChannelFailure)
 }
 
 const loadChannelMessages = function() {
@@ -40,34 +43,24 @@ const onGetChannel = function(event) {
         .then(channelUI.showChannel(channelId, data))
 }
 
-const onDeleteChannel = function(event) {
-    // event.preventDefault()
-    // debugger
-    // channelApi.deleteChannel(data)
-    //     .then(channelUI.deleteChannel)
+// const onDeleteChannel = function(data, getChannels) {
+//   event.preventDefault()
+//   channelApi.deleteChannel(data.channels[i].id, getChannels)
+//     .then((event) => {
+//      onDeleteChannelSuccess(event, getChannels)
+//     })
 
-}
+// }
 
 const onUpdateChannel = function(event) {
     event.preventDefault()
     let data = getFormFields(this)
 
     channelApi.updateChannel(getChanId(data), data)
-    .then(channelUI.onUpdateChannelSuccess)
+    .then(() => {
+        channelUI.onUpdateChannelSuccess(data, getChannels)
+    })
 }
-
-
-// // helper
-// const getChannelId = function(data) {
-//     let channelId
-//     for (let i = 0; i < store.channels.length; i++) {
-//         if (store.channels[i].name === data.channel.name) {
-//             channelId = store.channels[i].id
-//             return channelId
-//         }
-//     }
-// }
-
 
 // helper
 const getChanId = function(data) {
@@ -87,6 +80,6 @@ module.exports = {
     onShowChannels,
     loadChannelMessages,
     onGetChannel,
-    onDeleteChannel,
+    // onDeleteChannel,
     onUpdateChannel
 }
